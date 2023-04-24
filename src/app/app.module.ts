@@ -9,6 +9,8 @@ import { RegisterComponent } from './login/register/register.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HomePageComponent } from './frontOffice/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.
     RegisterComponent,
     ForgotPasswordComponent,
     NotFoundComponent,
-    DoctorsTableComponent
+    DoctorsTableComponent,
+    NavBarComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
