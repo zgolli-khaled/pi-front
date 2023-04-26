@@ -13,7 +13,7 @@
 
     <!-- Custom fonts for this template -->
     <link href="/assets/back/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-   
+
 
     <!-- Custom styles for this template -->
     <link href="/assets/back/css/sb-admin-2.min.css" rel="stylesheet">
@@ -50,27 +50,27 @@
             </li>
 
             <!-- Divider -->
-           
+
 
             <!-- Nav Item - Pages Collapse Menu -->
-           
+
 
             <!-- Nav Item - Utilities Collapse Menu -->
-           
+
 
             <!-- Divider -->
-          
+
 
             <!-- Heading -->
-           
+
 
             <!-- Nav Item - Pages Collapse Menu -->
-           
+
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="/docTable">
+                <a class="nav-link" href="/appointments">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Doctors Data</span></a>
+                    <span>Appointment Data</span></a>
             </li>
 
             <!-- Divider -->
@@ -208,8 +208,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -220,8 +219,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -232,8 +230,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -265,8 +262,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -299,119 +295,137 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                  
-                   
+                    <!-- delete -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to remove this appointment ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn  btn-success" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-warning" (click)="deleteApp()"
+                                        data-dismiss="modal">Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- update -->
+                    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="appDate">Appointment Date</label>
+                                            <input type="date" class="form-control" id="appDate" name="date"
+                                                [(ngModel)]="appointment.dateApp"
+                                                [value]="appUpdate != null ? appUpdate.dateApp : ''"
+                                                placeholder="Enter Date">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="timeBegin">Temps Debut</label>
+                                            <input type="time" class="form-control" id="timeBegin" name="tB"
+                                                [(ngModel)]="appointment.heureDebut"
+                                                [value]="appUpdate != null ? appUpdate.heureDebut : ''"
+                                                placeholder="Enter Temps">
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="timeEnd">Temps Fin</label>
+                                            <input type="time" class="form-control" id="timeEnd" name="tF"
+                                                [(ngModel)]="appointment.heureFin"
+                                                [value]="appUpdate != null ? appUpdate.heureFin : ''"
+                                                placeholder="Enter Temps">
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Description</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                                [(ngModel)]="appointment.description" name="desc"
+                                                *ngIf="appUpdate != null"> {{appUpdate.description}}</textarea>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary" (click)="AppointmentUpdate()"
+                                            style="width: 100%;" data-dismiss="modal">Update</button>
+                                        <button type="button" class="btn  btn-success" data-dismiss="modal"
+                                            style="width: 100%; margin-top: 2%;">Close</button>
+                                    </form>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables </h6>
+
                         </div>
+                        <a href="/appointments/addAppointment"> <button type="button" class="btn btn-primary"
+                                style="width :20% ; margin-left: 78% ; margin-top: 1%;">Add Appointment </button> </a>
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th> nom </th>
+                                            <th>prenom</th>
+                                            <th>cin</th>
+                                            <th>date</th>
+                                            <th>debut </th>
+                                            <th>fin</th>
+                                            <th>numero</th>
+                                            <th>action</th>
                                         </tr>
                                     </thead>
-                                   
+
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                        <tr *ngFor=" let data of datasApp">
+                                            <td>{{data.user.nom}}</td>
+                                            <td>{{data.user.prenom}}</td>
+                                            <td>{{data.user.cin}}</td>
+                                            <td>{{data.dateApp}}</td>
+                                            <td>{{data.heureDebut }}</td>
+                                            <td>{{data.heureFin}}</td>
+                                            <td>{{data.user.numero}}</td>
+                                            <td style="text-align: center;"><button type="button"
+                                                    (click)="getAppUpdate(data)" style="margin-right: 5%;"
+                                                    class="btn btn-info" data-toggle="modal"
+                                                    data-target="#exampleModalCenter2">
+                                                    Update
+                                                </button><button type="button" (click)="showNotifDelete(data.idApp)"
+                                                    class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#exampleModalCenter">
+                                                    Delete
+                                                </button></td>
                                         </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Herrod Chandler</td>
-                                            <td>Sales Assistant</td>
-                                            <td>San Francisco</td>
-                                            <td>59</td>
-                                            <td>2012/08/06</td>
-                                            <td>$137,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Rhona Davidson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Tokyo</td>
-                                            <td>55</td>
-                                            <td>2010/10/14</td>
-                                            <td>$327,900</td>
-                                        </tr>
-                                      
-                                        <tr>
-                                            <td>Jena Gaines</td>
-                                            <td>Office Manager</td>
-                                            <td>London</td>
-                                            <td>30</td>
-                                            <td>2008/12/19</td>
-                                            <td>$90,560</td>
-                                        </tr>
-                                      
-                                        <tr>
-                                            <td>Michael Bruce</td>
-                                            <td>Javascript Developer</td>
-                                            <td>Singapore</td>
-                                            <td>29</td>
-                                            <td>2011/06/27</td>
-                                            <td>$183,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
-                                            <td>27</td>
-                                            <td>2011/01/25</td>
-                                            <td>$112,000</td>
-                                        </tr>
+
+
                                     </tbody>
                                 </table>
                             </div>
@@ -425,7 +439,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-         
+
             <!-- End of Footer -->
 
         </div>

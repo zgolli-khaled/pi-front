@@ -12,6 +12,11 @@ import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomePageComponent } from './frontOffice/home-page/home-page.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AddAppointmentComponent } from './backOffice/add-appointment/add-appointment.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +27,15 @@ import { HomePageComponent } from './frontOffice/home-page/home-page.component';
     NotFoundComponent,
     DoctorsTableComponent,
     NavBarComponent,
-    HomePageComponent
+    HomePageComponent,
+    AddAppointmentComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

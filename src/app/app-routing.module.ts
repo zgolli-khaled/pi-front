@@ -7,6 +7,8 @@ import { RegisterComponent } from './login/register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.component';
 import { HomePageComponent } from './frontOffice/home-page/home-page.component';
+import { AddAppointmentComponent } from './backOffice/add-appointment/add-appointment.component';
+
 
 const routes: Routes = [
   {
@@ -15,6 +17,10 @@ const routes: Routes = [
   {
     path: "dashboard", component: DashboardComponent
   },
+  {
+    path: "appointments/addAppointment", component: AddAppointmentComponent
+  },
+
   {
     path: "login", component: LoginComponent
   },
@@ -25,12 +31,12 @@ const routes: Routes = [
     path: "register", component: RegisterComponent
   },
   {
-    path: '',redirectTo : 'home',pathMatch:'full'
+    path: '', redirectTo: 'home', pathMatch: 'full'
   },
   {
-    path: "docTable", component: DoctorsTableComponent
-  },{
-    path: '**',component: NotFoundComponent
+    path: "appointments", component: DoctorsTableComponent
+  }, {
+    path: '**', component: NotFoundComponent
   },
 ];
 
