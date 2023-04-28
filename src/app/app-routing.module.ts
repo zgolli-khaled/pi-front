@@ -7,6 +7,7 @@ import { RegisterComponent } from './login/register/register.component';
 import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.component';
 import {  PrescriptionComponent } from './backOffice/prescription/prescription.component'
 import {ReclamationComponent} from "./backOffice/reclamation/reclamation.component";
+import {DisplayReclamComponent} from "./backOffice/display-reclam/display-reclam.component";
 
 const routes: Routes = [
   {
@@ -36,6 +37,9 @@ const routes: Routes = [
   },
   {
     path: 'reclamation', component: ReclamationComponent
+  },
+  {
+    path: 'displayreclam', component: DisplayReclamComponent
   },
 
 ];

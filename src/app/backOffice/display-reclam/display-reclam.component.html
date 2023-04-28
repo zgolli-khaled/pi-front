@@ -1,0 +1,40 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Display All Reclamations</h1>
+<hr>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Admin Table</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th><b>ID_REC</b></th>
+            <th><b>Object</b></th>
+            <th><b>Subject</b></th>
+            <th><b>Status</b></th>
+            <th><b>Status</b></th>
+            <th><b>Id_User</b></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let reclamation of reclamations" [style.background-color]="getStatusColor(reclamation.status)">
+            <td>{{ reclamation.idRec }}</td>
+            <td>{{ reclamation.objet }}</td>
+            <td>{{ reclamation.description }}</td>
+            <td>{{ reclamation.status }}</td>
+            <td>{{ reclamation.date }}</td>
+            <td>{{ reclamation.idUser }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

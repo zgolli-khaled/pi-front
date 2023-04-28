@@ -12,6 +12,7 @@ import { PrescriptionComponent } from './backOffice/prescription/prescription.co
 import { MenuComponent } from './composants_backOffice/menu/menu.component';
 import { ReclamationComponent } from './backOffice/reclamation/reclamation.component';
 import {HttpClientModule} from "@angular/common/http";
+import { DisplayReclamComponent } from './backOffice/display-reclam/display-reclam.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {HttpClientModule} from "@angular/common/http";
     PrescriptionComponent,
     MenuComponent,
     ReclamationComponent,
+    DisplayReclamComponent,
   ],
   imports: [
     BrowserModule,
