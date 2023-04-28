@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-  
+
     this.loadJsFile("assets/back/js/sb-admin-2.min.js");
 
 
@@ -26,21 +26,21 @@ export class DashboardComponent implements OnInit {
     this.loadJsFile("assets/back/js/demo/chart-area-demo.js");
 
     this.loadJsFile("assets/back/js/demo/chart-pie-demo.js");
-   
 
-    
 
-    
 
-    
-    
+
+
+
+
+
   }
 
-  public loadJsFile(url : string) {  
-    let node = document.createElement('script');  
-    node.src = url;  
-    node.type = 'text/javascript';  
-    document.getElementsByTagName('head')[0].appendChild(node);  
-  }  
+  public loadJsFile(url : string) {
+    let node = document.createElement('script');
+    node.src = url;
+    node.type = 'text/javascript';
+    document.getElementsByTagName('head')[0].appendChild(node);
+  }
 
 }

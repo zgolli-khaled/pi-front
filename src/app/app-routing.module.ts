@@ -4,30 +4,40 @@ import { DashboardComponent } from './backOffice/dashboard/dashboard.component';
 import { LoginComponent } from './login/login/login.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { RegisterComponent } from './login/register/register.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.component';
+import {  PrescriptionComponent } from './backOffice/prescription/prescription.component'
+import {ReclamationComponent} from "./backOffice/reclamation/reclamation.component";
 
 const routes: Routes = [
   {
-    path: "dashboard", component: DashboardComponent
+    path: '', component: DashboardComponent , children :[
+      {
+      path: 'NewPrescription', component: PrescriptionComponent ,
+    }]
+
+  },
+
+  {
+    path: 'login', component: LoginComponent
   },
   {
-    path: "login", component: LoginComponent
+    path: 'forgotPassword', component: ForgotPasswordComponent
   },
   {
-    path: "forgotPassword", component: ForgotPasswordComponent
+    path: 'register', component: RegisterComponent
   },
-  {
-    path: "register", component: RegisterComponent
-  },
+
   {
     path: '',redirectTo : 'login',pathMatch:'full'
   },
+
   {
-    path: "docTable", component: DoctorsTableComponent
-  },{
-    path: '**',component: NotFoundComponent
+    path: 'docTable', component: DoctorsTableComponent
   },
+  {
+    path: 'reclamation', component: ReclamationComponent
+  },
+
 ];
 
 @NgModule({
