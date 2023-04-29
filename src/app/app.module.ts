@@ -15,6 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { DisplayReclamComponent } from './backOffice/display-reclam/display-reclam.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { RecDialogComponent } from './backOffice/rec-dialog/rec-dialog.component';
+import { DiscussionComponent } from './backOffice/discussion/discussion.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RecDialogComponent } from './backOffice/rec-dialog/rec-dialog.component
     ReclamationComponent,
     DisplayReclamComponent,
     RecDialogComponent,
+    DiscussionComponent,
   ],
   imports: [
     BrowserModule,

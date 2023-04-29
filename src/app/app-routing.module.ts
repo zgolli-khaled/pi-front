@@ -9,6 +9,7 @@ import {  PrescriptionComponent } from './backOffice/prescription/prescription.c
 import {ReclamationComponent} from "./backOffice/reclamation/reclamation.component";
 import {DisplayReclamComponent} from "./backOffice/display-reclam/display-reclam.component";
 import {RecDialogComponent} from "./backOffice/rec-dialog/rec-dialog.component";
+import {DiscussionComponent} from "./backOffice/discussion/discussion.component";
 
 const routes: Routes = [
   {
@@ -16,10 +17,12 @@ const routes: Routes = [
       {
           path: 'NewPrescription', component: PrescriptionComponent} ,
          {path: 'reclamation', component: ReclamationComponent , children :[
-            { path: 'RecDialogComponent', component: RecDialogComponent}
+            { path: 'RecDialog', component: RecDialogComponent}
+
            ]
          },
-      {path: 'displayreclam', component: DisplayReclamComponent}
+      {path: 'displayreclam', component: DisplayReclamComponent},
+      { path: 'discussion/:id', component: DiscussionComponent}
 ]
 
   },
