@@ -8,13 +8,19 @@ import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.
 import {  PrescriptionComponent } from './backOffice/prescription/prescription.component'
 import {ReclamationComponent} from "./backOffice/reclamation/reclamation.component";
 import {DisplayReclamComponent} from "./backOffice/display-reclam/display-reclam.component";
+import {RecDialogComponent} from "./backOffice/rec-dialog/rec-dialog.component";
 
 const routes: Routes = [
   {
     path: '', component: DashboardComponent , children :[
       {
-      path: 'NewPrescription', component: PrescriptionComponent ,
-    }]
+          path: 'NewPrescription', component: PrescriptionComponent} ,
+         {path: 'reclamation', component: ReclamationComponent , children :[
+            { path: 'RecDialogComponent', component: RecDialogComponent}
+           ]
+         },
+      {path: 'displayreclam', component: DisplayReclamComponent}
+]
 
   },
 
@@ -31,16 +37,11 @@ const routes: Routes = [
   {
     path: '',redirectTo : 'login',pathMatch:'full'
   },
-
   {
     path: 'docTable', component: DoctorsTableComponent
   },
-  {
-    path: 'reclamation', component: ReclamationComponent
-  },
-  {
-    path: 'displayreclam', component: DisplayReclamComponent
-  },
+
+
 
 ];
 

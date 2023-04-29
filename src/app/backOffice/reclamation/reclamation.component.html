@@ -10,35 +10,25 @@
             <form class="user" (ngSubmit)="submitReclamation()">
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
+                  <label>Object : </label>
                   <input class="form-control form-control-user" type="text" id="objet" name="objet" [(ngModel)]="objet">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-12">
+                  <label>Subject : </label>
                   <textarea class="form-control form-control-user" id="description" name="description" [(ngModel)]="description"></textarea>
                 </div>
               </div>
-              <button class="btn btn-primary btn-user btn-block" type="submit">
+              <button class="btn btn-primary btn-user btn-block" type="submit" (click)="openDialog()">
                 Envoyer la reclamation
               </button>
               <hr>
-              <a href="index.html" class="btn btn-google btn-user btn-block">
-                <i class="fab fa-google fa-fw"></i> Register with Google
-              </a>
-              <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-              </a>
             </form>
-            <hr>
-            <div class="text-center">
-              <a class="small" href="forgot-password.html">Forgot Password?</a>
-            </div>
-            <div class="text-center">
-              <a class="small" href="login.html">Already have an account? Login!</a>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

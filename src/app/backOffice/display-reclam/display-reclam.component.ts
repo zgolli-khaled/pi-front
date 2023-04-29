@@ -27,4 +27,14 @@ export class DisplayReclamComponent implements OnInit {
         return 'none';
     }
   }
+
+  deleteReclamation(reclamationId: number) {
+    this.ngOnInit();
+    this.http.delete(`http://localhost:8098/reclamation/deleteReclamation/${reclamationId}`).subscribe((res) => {
+      console.log(`Reclamation with id ${reclamationId} deleted successfully`);
+      this.reclamations = this.reclamations.filter((reclamation) => reclamation.id !== reclamationId);
+      this.ngOnInit();
+    });
+  }
+
 }

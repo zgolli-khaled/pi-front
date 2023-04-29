@@ -13,6 +13,8 @@ import { MenuComponent } from './composants_backOffice/menu/menu.component';
 import { ReclamationComponent } from './backOffice/reclamation/reclamation.component';
 import {HttpClientModule} from "@angular/common/http";
 import { DisplayReclamComponent } from './backOffice/display-reclam/display-reclam.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { RecDialogComponent } from './backOffice/rec-dialog/rec-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import { DisplayReclamComponent } from './backOffice/display-reclam/display-recl
     MenuComponent,
     ReclamationComponent,
     DisplayReclamComponent,
+    RecDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

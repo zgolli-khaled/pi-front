@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import {RecDialogComponent} from "../rec-dialog/rec-dialog.component";
+
 
 @Component({
   selector: 'app-reclamation',
@@ -10,7 +13,7 @@ export class ReclamationComponent {
   objet: string = '';
   description: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dialog: MatDialog) { }
 
   submitReclamation() {
     const id = 1;
@@ -25,5 +28,9 @@ export class ReclamationComponent {
           console.log('Error creating reclamation:', error);
         }
       });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(RecDialogComponent);
   }
 }
