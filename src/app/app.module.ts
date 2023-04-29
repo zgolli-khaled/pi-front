@@ -15,6 +15,7 @@ import { HomePageComponent } from './frontOffice/home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AddAppointmentComponent } from './backOffice/add-appointment/add-appointment.component';
+import { UserAppComponent } from './frontOffice/user-app/user-app.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AddAppointmentComponent } from './backOffice/add-appointment/add-appoin
     DoctorsTableComponent,
     NavBarComponent,
     HomePageComponent,
-    AddAppointmentComponent
+    AddAppointmentComponent,
+    UserAppComponent
     
   ],
   imports: [

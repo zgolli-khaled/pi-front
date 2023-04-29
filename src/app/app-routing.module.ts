@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.component';
 import { HomePageComponent } from './frontOffice/home-page/home-page.component';
 import { AddAppointmentComponent } from './backOffice/add-appointment/add-appointment.component';
+import { UserAppComponent } from './frontOffice/user-app/user-app.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,9 @@ const routes: Routes = [
   },
   {
     path: "dashboard", component: DashboardComponent
+  },
+  {
+    path: "user/appointment", component: UserAppComponent
   },
   {
     path: "appointments/addAppointment", component: AddAppointmentComponent
