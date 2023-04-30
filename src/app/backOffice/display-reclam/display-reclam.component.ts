@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import Chart from 'chart.js/auto';
+
 @Component({
   selector: 'app-display-reclam',
   templateUrl: './display-reclam.component.html',
@@ -9,13 +10,17 @@ import Chart from 'chart.js/auto';
 export class DisplayReclamComponent implements OnInit {
   reclamations!: any[];
   stats: any = [];
+  currentPage = 1;
+  pageSize = 10;
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient ) { }
 
   ngOnInit() {
     this.http.get<any[]>('http://localhost:8098/reclamation/displayreclamation').subscribe((res) => {
       this.reclamations = res;
     });
+
     /*************************************************************************************************************************/
     this.http.get<any[]>('http://localhost:8098/reclamation/statistiques').subscribe((res) => {
       this.stats = res;
@@ -53,6 +58,8 @@ export class DisplayReclamComponent implements OnInit {
 
     /*************************************************************************************************************************/
   }
+
+
 
   getStatusColor(status: string): string {
     switch (status) {

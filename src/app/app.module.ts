@@ -16,6 +16,7 @@ import { DisplayReclamComponent } from './backOffice/display-reclam/display-recl
 import {MatDialogModule} from "@angular/material/dialog";
 import { RecDialogComponent } from './backOffice/rec-dialog/rec-dialog.component';
 import { DiscussionComponent } from './backOffice/discussion/discussion.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -31,13 +32,16 @@ import { DiscussionComponent } from './backOffice/discussion/discussion.componen
     DisplayReclamComponent,
     RecDialogComponent,
     DiscussionComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
