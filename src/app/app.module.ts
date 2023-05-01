@@ -16,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AddAppointmentComponent } from './backOffice/add-appointment/add-appointment.component';
 import { UserAppComponent } from './frontOffice/user-app/user-app.component';
-
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { UserAppComponent } from './frontOffice/user-app/user-app.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+     FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

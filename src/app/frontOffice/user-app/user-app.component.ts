@@ -1,15 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import Stepper from 'bs-stepper';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/shared/user.service';
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
+
+import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
+import dayGridPlugin from '@fullcalendar/daygrid';
+import { FullCalendarComponent } from '@fullcalendar/angular';
+
 @Component({
   selector: 'app-user-app',
   templateUrl: './user-app.component.html',
   styleUrls: ['./user-app.component.css']
 })
 export class UserAppComponent implements OnInit {
+ 
+  events: any = [
+    { title: 'Complet', date: '2023-05-03', color: '#FF0000' },
+    { title: 'Complet', date: '2023-05-01', color: '#FF0000' },
+   
+   
+  ];
+
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+     plugins: [dayGridPlugin, interactionPlugin],
+     height: 'auto',
+     events: this.events,
+     dateClick: this.handleDateClick.bind(this),
+     
+  };
+
+  handleDateClick(arg:any) {
+    alert('date click! ' + arg.dateStr)
+    
+  }
+
+
+  
+
+  
 
   getSpecialiteValue(nom: String) {
+    
     console.log(nom);
 
     this.usersFilter = this.dataUsers.filter((d) => {
@@ -44,8 +77,22 @@ export class UserAppComponent implements OnInit {
     return false;
   }
 
+  
+  medecin(){
+    setTimeout(()=>{
+      this.calendarOptions={
+        initialView: 'dayGridMonth',
+         plugins: [dayGridPlugin, interactionPlugin],
+         height: 'auto',
+         
+      };
+    },50)
+  }
+  
   ngOnInit(): void {
+   
 
+  
     // get all users 
 
 
