@@ -2544,13 +2544,13 @@ progress {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #1B71A1;
-  background-color: #DBDBE9;
+  
+  
   background-clip: padding-box;
-  border: 1px solid #AFAEBC;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+ 
+ 
+ 
+
   border-radius: 0.5rem;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -2576,9 +2576,9 @@ progress {
 }
 
 .form-control:focus {
-  color: #1B71A1;
+
   background-color: #DBDBE9;
-  border-color: rgba(40, 55, 121, 0.8);
+
   outline: 0;
   -webkit-box-shadow: none;
   box-shadow: none;

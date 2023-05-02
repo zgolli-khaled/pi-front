@@ -72,7 +72,7 @@
                         <div class="row ">
                             <div class="col-3 p-3 m-3 specilite " style="border-style: groove; border-radius: 10px;"
                                 *ngFor="let d  of usersFilter">
-                                <div class="card text-center" (click)="medecin()" (click)="next()">
+                                <div class="card text-center" (click)="medecin(d)" (click)="next()">
                                     <img class="card-img-top"
                                         src="https://img.freepik.com/free-photo/portrait-smiling-handsome-male-doctor-man_171337-5055.jpg"
                                         alt="Card image cap">
@@ -100,31 +100,72 @@
 
 
 
-                    <div id="test-l-3" class="content text-center">
-                        
-                        <full-calendar #calendar  [options]="calendarOptions"  ></full-calendar>
-                    </div>
-             
+                <div id="test-l-3" class="content text-center">
+                    <button type="button" class="btn btn-secondary btn-sm   " data-toggle="modal"
+                        data-target="#exampleModalCenter">
+                        Choisir Date
+                    </button>
+                    <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+                </div>
+
             </div>
         </div>
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Choisir rendez-vous</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="appDate">Appointment Date</label>
+                                <input type="date" class="form-control" id="appDate"
+                                    min="{{dateToday() | date:'yyyy-MM-dd'}}" name="date" placeholder="Enter Date"
+                                    (change)="onKey($event)">
+
+                            </div>
+                            <!--   <div class="form-group">
+                                <label for="timeBegin">Temps Debut</label>
+                                <input type="time" class="form-control" id="timeBegin" name="tB"
+                                    placeholder="Enter Temps">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="timeEnd">Temps Fin</label>
+                                <input type="time" class="form-control" id="timeEnd" name="tF"
+                                    placeholder="Enter Temps">
+
+                            </div>
+                                -->
+
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Example select</label>
+                                <select class="form-control" id="exampleFormControlSelect1"  [attr.disabled]="selectVlaues ? null :'' ">
+                                    <option value="" selected disabled hidden>Select temps</option>
+                                    <option defaultValue='' *ngFor="let s of selectFilterOptions">{{s}}</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                    name="desc"></textarea>
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark btn-sm " data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary btn-sm">Save </button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
     </div>
 </section>
