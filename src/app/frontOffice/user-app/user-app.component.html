@@ -18,7 +18,7 @@
                     </button>
                 </div>
                 <div class="line"></div>
-                <div class="step" data-target="#test-l-2">
+                <div class="step" data-target="#test-l-2"  >
                     <button class="step-trigger">
                         <span class="bs-stepper-circle">2</span>
                         <span class="bs-stepper-label">Choisir Medecin</span>
@@ -28,7 +28,7 @@
                 <div class="step" data-target="#test-l-3">
                     <button class="step-trigger">
                         <span class="bs-stepper-circle">3</span>
-                        <span class="bs-stepper-label">Validate</span>
+                        <span class="bs-stepper-label">Rendez vous</span>
                     </button>
                 </div>
             </div>
@@ -101,7 +101,7 @@
 
 
                 <div id="test-l-3" class="content text-center">
-                    <button type="button" class="btn btn-secondary btn-sm   " data-toggle="modal"
+                    <button type="button" class="btn btn-secondary btn-sm   " data-toggle="modal" (click)="resetDate()"
                         data-target="#exampleModalCenter">
                         Choisir Date
                     </button>
@@ -126,7 +126,7 @@
                                 <label for="appDate">Appointment Date</label>
                                 <input type="date" class="form-control" id="appDate"
                                     min="{{dateToday() | date:'yyyy-MM-dd'}}" name="date" placeholder="Enter Date"
-                                    (change)="onKey($event)">
+                                    (change)="onKey($event)" [value]="datereset"  [(ngModel)]="appointment.dateApp">
 
                             </div>
                             <!--   <div class="form-group">
@@ -145,15 +145,15 @@
 
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Example select</label>
-                                <select class="form-control" id="exampleFormControlSelect1"  [attr.disabled]="selectVlaues ? null :'' ">
-                                    <option value="" selected disabled hidden>Select temps</option>
+                                <select class="form-control" id="exampleFormControlSelect1"  [attr.disabled]="selectVlaues ? null :'' "  (click)="getSelectedValue($event)">
+                                    <option value="" selected disabled >Select temps</option>
                                     <option defaultValue='' *ngFor="let s of selectFilterOptions">{{s}}</option>
 
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Description</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  [(ngModel)]="appointment.description"
                                     name="desc"></textarea>
                             </div>
 
@@ -162,7 +162,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-dark btn-sm " data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-secondary btn-sm">Save </button>
+                        <button type="button"   type="submit" class="btn btn-secondary btn-sm"  data-dismiss="modal" (click)="submitAPP()">Save </button>
                     </div>
                 </div>
             </div>

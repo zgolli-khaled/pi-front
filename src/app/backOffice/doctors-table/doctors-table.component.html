@@ -347,14 +347,7 @@
                                                 placeholder="Enter Temps">
 
                                         </div>
-                                        <div class="form-group">
-                                            <label for="timeEnd">Temps Fin</label>
-                                            <input type="time" class="form-control" id="timeEnd" name="tF"
-                                                [(ngModel)]="appointment.heureFin"
-                                                [value]="appUpdate != null ? appUpdate.heureFin : ''"
-                                                placeholder="Enter Temps">
-
-                                        </div>
+                                      
 
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">Description</label>
@@ -398,7 +391,7 @@
                                             <th>cin</th>
                                             <th>date</th>
                                             <th>debut </th>
-                                            <th>fin</th>
+                                            
                                             <th>numero</th>
                                             <th>action</th>
                                         </tr>
@@ -411,7 +404,7 @@
                                             <td>{{data.user.cin}}</td>
                                             <td>{{data.dateApp}}</td>
                                             <td>{{data.heureDebut }}</td>
-                                            <td>{{data.heureFin}}</td>
+                                            
                                             <td>{{data.user.numero}}</td>
                                             <td style="text-align: center;"><button type="button"
                                                     (click)="getAppUpdate(data)" style="margin-right: 5%;"
