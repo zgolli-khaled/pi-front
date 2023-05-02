@@ -8,6 +8,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.component';
 import { HomePageComponent } from './frontOffice/home-page/home-page.component';
 import { AddAppointmentComponent } from './backOffice/add-appointment/add-appointment.component';
+import { ChambresTableComponent } from './backOffice/chambres-table/chambres-table.component';
+import { ChambreComponent } from './frontOffice/chambre/chambre.component';
 
 
 const routes: Routes = [
@@ -25,10 +27,16 @@ const routes: Routes = [
     path: "login", component: LoginComponent
   },
   {
+    path: "chambre", component: ChambresTableComponent
+  },
+  {
     path: "forgotPassword", component: ForgotPasswordComponent
   },
   {
     path: "register", component: RegisterComponent
+  },
+  {
+    path: "homechambre", component: ChambreComponent
   },
   {
     path: '', redirectTo: 'home', pathMatch: 'full'

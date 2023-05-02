@@ -15,6 +15,9 @@ import { HomePageComponent } from './frontOffice/home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AddAppointmentComponent } from './backOffice/add-appointment/add-appointment.component';
+import { ChambresTableComponent } from './backOffice/chambres-table/chambres-table.component';
+import { AddChambreComponent } from './backOffice/add-chambre/add-chambre.component';
+import { ChambreComponent } from './frontOffice/chambre/chambre.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { AddAppointmentComponent } from './backOffice/add-appointment/add-appoin
     DoctorsTableComponent,
     NavBarComponent,
     HomePageComponent,
-    AddAppointmentComponent
+    AddAppointmentComponent,
+    ChambresTableComponent,
+    AddChambreComponent,
+    ChambreComponent
     
   ],
   imports: [
