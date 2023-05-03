@@ -3,4 +3,61 @@
   border: #ca2819;
   background-color: #f3b9b5;
 }
+.btn-animate {
+  position: relative;
+  left: 0;
+  transition: left 0.3s ease;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-animate:hover,
+.btn-animate:focus {
+  left: 10px;
+}
+
+@keyframes btn-hover {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 50px;
+  }
+  100% {
+    left: 50px;
+  }
+}
+
+.btn-animate:hover::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 500%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  animation: btn-hover 1s infinite;
+  z-index: -1;
+}
+
+.btn-animate:focus::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.btn-medium {
+  width:200px/* Change the width to your desired value */
+}
 

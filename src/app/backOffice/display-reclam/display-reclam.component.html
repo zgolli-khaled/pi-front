@@ -31,13 +31,14 @@
             <td>{{ reclamation.date }}</td>
             <td>
               <ng-container>
-                <button class="btn btn-danger ml-2" (click)="deleteReclamation(reclamation.idRec)">Delete</button>  &nbsp; &nbsp; &nbsp;
                 <a [routerLink]="['/discussion', reclamation.idRec]" class="btn btn-light btn-icon-split">
             <span class="icon text-gray-600">
               <i class="fas fa-arrow-right"></i>
             </span>
                   <span class="text">Start chatting</span>
                 </a>
+                &nbsp; &nbsp; &nbsp; <button  class="btn btn-secondary btn-icon-split" (click)="closeReclamation(reclamation.idRec)">Close Discussion</button>
+                &nbsp; &nbsp; &nbsp; <button class="btn btn-danger ml-2" (click)="deleteReclamation(reclamation.idRec)">Delete</button>
               </ng-container>
             </td>
           </tr>
@@ -46,28 +47,6 @@
 
         <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
 
-
-
-        <!--**************************************************************************************************************-->
-
-
-    <div class="col-xl-4 col-lg-5">
-      <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Reclamations Statics!</h6>
-        </div>
-        <div class="card-body">
-          <div class="chart-pie pt-4">
-            <canvas id="myChart"></canvas>
-          </div>
-          <hr>
-          This chart shows the treatement of the reclamations by the admins!
-        </div>
-      </div>
-    </div>
-
-
-        <!--**************************************************************************************************************-->
 
 
       </div>

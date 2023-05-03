@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import Chart from 'chart.js/auto';
+import {HttpClient} from '@angular/common/http';
+import {map} from "rxjs";
+
 
 @Component({
   selector: 'app-display-reclam',
@@ -9,7 +10,6 @@ import Chart from 'chart.js/auto';
 })
 export class DisplayReclamComponent implements OnInit {
   reclamations!: any[];
-  stats: any = [];
   currentPage = 1;
   pageSize = 10;
 
@@ -17,49 +17,26 @@ export class DisplayReclamComponent implements OnInit {
   constructor(private http: HttpClient ) { }
 
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:8098/reclamation/displayreclamation').subscribe((res) => {
+
+
+    this.http.get<any[]>('http://localhost:8098/reclamation/displayreclamation').pipe(
+      map((reclamations) => reclamations.sort((a, b) => {
+        // Sort by status
+        if (a.status < b.status) {
+          return -1;
+        } else if (a.status > b.status) {
+          return 1;
+        } else {
+          // If status is the same, sort by date (latest first)
+          return b.date.localeCompare(a.date);
+        }
+      }))
+    ).subscribe((res) => {
       this.reclamations = res;
     });
 
-    /*************************************************************************************************************************/
-    this.http.get<any[]>('http://localhost:8098/reclamation/statistiques').subscribe((res) => {
-      this.stats = res;
 
-      const data = {
-        labels: ['Traitées', 'Encours', 'Non-traitée'],
-        datasets: [{
-          data: [this.stats['Nombre des reclamations traitées '].body, this.stats['Nombre des reclamations en cours de traitement'].body, this.stats['Nombre des reclamations non traitées'].body],
-          backgroundColor: [
-            'rgba(0,255,21,0.83)',
-            'rgba(0,63,255,0.82)',
-            'rgba(126,126,126,0.5)'
-          ]
-        }]
-      };
-      console.log(data);
-      const options = {
-        plugins: {
-          legend: {
-            display: false
-          }
-        },
-        responsive: true,
-        maintainAspectRatio: false
-      };
-
-      const ctx = document.getElementById('myChart') as HTMLCanvasElement;
-      const myChart = new Chart(ctx, {
-        type: 'polarArea',
-        data: data,
-        options: options
-      });
-
-    });
-
-    /*************************************************************************************************************************/
   }
-
-
 
   getStatusColor(status: string): string {
     switch (status) {
@@ -79,6 +56,19 @@ export class DisplayReclamComponent implements OnInit {
       this.reclamations = this.reclamations.filter((reclamation) => reclamation.id !== reclamationId);
       this.ngOnInit();
     });
+  }
+
+  closeReclamation(reclamationId: number) {
+    const endpoint = `http://localhost:8098/reclamation/ended/${reclamationId}`;
+    this.http.put(endpoint, {}).subscribe((res) => {
+      console.log(`Reclamation with id ${reclamationId} closed successfully`);
+      const index = this.reclamations.findIndex((reclamation) => reclamation.id === reclamationId);
+      if (index !== -1) {
+        this.reclamations[index].status = 'terminée';
+      }
+
+    });
+    window.location.reload();
   }
 
 }

@@ -72,3 +72,14 @@ body {
 .input-container button:focus {
   outline: none;
 }
+
+.btn-close {
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-close:hover {
+  background-color: #ca2819;
+  transform: scale(1.5);
+  opacity: 0.8;
+
+}

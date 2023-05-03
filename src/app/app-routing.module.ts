@@ -10,6 +10,8 @@ import {ReclamationComponent} from "./backOffice/reclamation/reclamation.compone
 import {DisplayReclamComponent} from "./backOffice/display-reclam/display-reclam.component";
 import {RecDialogComponent} from "./backOffice/rec-dialog/rec-dialog.component";
 import {DiscussionComponent} from "./backOffice/discussion/discussion.component";
+import {StatComponent} from "./backOffice/stat/stat.component";
+import {HomeComponent} from "./backOffice/home/home.component";
 
 const routes: Routes = [
   {
@@ -17,15 +19,16 @@ const routes: Routes = [
       {
           path: 'NewPrescription', component: PrescriptionComponent} ,
          {path: 'reclamation', component: ReclamationComponent , children :[
-            { path: 'RecDialog', component: RecDialogComponent}
-
-           ]
+            { path: 'RecDialog', component: RecDialogComponent}]
          },
-      {path: 'displayreclam', component: DisplayReclamComponent},
-      { path: 'discussion/:id', component: DiscussionComponent}
-]
 
-  },
+         {path: 'displayreclam', component: DisplayReclamComponent},
+         {path: 'discussion/:id', component: DiscussionComponent},
+      {path: 'Stat', component: StatComponent},
+      {path: 'home', component: HomeComponent}
+]},
+
+
 
   {
     path: 'login', component: LoginComponent},
