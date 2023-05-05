@@ -5,6 +5,7 @@ export class Appointment {
     dateApp ! : string;
     heureDebut ! : string;
     description !: string;
+    state !: string;
     cin !: string;
     user ! : User;
     

@@ -17,6 +17,9 @@ import { FormsModule } from '@angular/forms';
 import { AddAppointmentComponent } from './backOffice/add-appointment/add-appointment.component';
 import { UserAppComponent } from './frontOffice/user-app/user-app.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { DeleteAppComponent } from './frontOffice/delete-app/delete-app.component';
+import { MedecinAppComponent } from './frontOffice/medecin-app/medecin-app.component';
+import { MedecinModifAppComponent } from './frontOffice/medecin-modif-app/medecin-modif-app.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     NavBarComponent,
     HomePageComponent,
     AddAppointmentComponent,
-    UserAppComponent
+    UserAppComponent,
+    DeleteAppComponent,
+    MedecinAppComponent,
+    MedecinModifAppComponent
     
   ],
   imports: [

@@ -35,7 +35,7 @@ export class UserAppComponent implements OnInit {
     this.selectValue = event.target.value;
 
     console.log(this.selectValue);
-    
+
   }
 
   selectVlaues: any = null;
@@ -49,7 +49,7 @@ export class UserAppComponent implements OnInit {
 
 
   onKey(event: any) {
-  
+
     const inputValue = event.target.value;
 
     this.datereset = inputValue;
@@ -58,11 +58,11 @@ export class UserAppComponent implements OnInit {
     this.selectOptions = ['09:00:00', '10:00:00', '11:00:00', '14:00:00', '15:00:00', '16:00:00']
     this.selectFilterOptions = ['09:00:00', '10:00:00', '11:00:00', '14:00:00', '15:00:00', '16:00:00']
 
-    
 
 
-   
-    
+
+
+
 
     this.dataApp.filter((obj) => {
 
@@ -71,7 +71,7 @@ export class UserAppComponent implements OnInit {
       let b = new Date(inputValue);
       const yearOBJ = a.getFullYear();
       const monthOBJ = a.getMonth();
-      const dayOBJ = a.getDate() ;
+      const dayOBJ = a.getDate();
 
       const yearINPUT = b.getFullYear();
       const monthINPUT = b.getMonth();
@@ -93,7 +93,7 @@ export class UserAppComponent implements OnInit {
         })
         this.selectOptions = this.selectFilterOptions;
 
-         console.log(this.selectFilterOptions);
+        console.log(this.selectFilterOptions);
 
       }
 
@@ -121,12 +121,15 @@ export class UserAppComponent implements OnInit {
     plugins: [dayGridPlugin, interactionPlugin],
     height: 'auto',
     events: this.events,
-    dateClick: this.handleDateClick.bind(this),
+    eventClick: this.handleDateClick.bind(this),
 
   };
 
   handleDateClick(arg: any) {
-    alert('date click! ' + arg.dateStr)
+    console.log(arg);
+    
+
+   
 
   }
 
@@ -175,11 +178,11 @@ export class UserAppComponent implements OnInit {
 
     const dd = new Date(this.appointment.dateApp);
 
-    dd.setDate(dd.getDate() );
+    dd.setDate(dd.getDate());
     const datestring = dd;
 
     console.log(datestring);
-    
+
     //this.appointment.dateApp = datestring.substring(0,9);
 
 
@@ -213,27 +216,27 @@ export class UserAppComponent implements OnInit {
     }
     this.appointment.cin = this.medecinValue.cin;
 
-    console.log(this.appointment);
-    
+    this.appointment.state="PENDING"
+
 
     this.appService.addAppointment(this.appointment).subscribe(() => {
-      
+
       this.appService.getappointment().subscribe((data) => {
 
-     //   console.log(data);
-        this.selectVlaues=null;
+        //   console.log(data);
+        this.selectVlaues = null;
 
         this.dataApp = data;
 
- 
-    this.selectFilterOptions = []
-      
+
+        this.selectFilterOptions = []
+
 
 
         // console.log(this.selectFilterOptions);
 
         this.agendaData = this.dataApp.filter((data) => {
-          if (data.cin == this.medecinValue.cin) {
+          if (data.cin == this.medecinValue.cin && data.state=="ACCEPTED") {
             //  console.log("hello");sds
 
             const ev = {
@@ -275,12 +278,12 @@ export class UserAppComponent implements OnInit {
 
       });
 
-    }); 
+    });
 
 
 
 
-  
+
 
 
   }
@@ -308,12 +311,15 @@ export class UserAppComponent implements OnInit {
     /// console.log(u);
     //  console.log(this.dataApp);
 
+console.log(this.dataApp);
 
     this.agendaData = this.dataApp.filter((data) => {
-      if (data.cin == u.cin) {
-        //  console.log("hello");
+
+      if (data.cin == u.cin && data.state=='ACCEPTED') {
+       
 
         const ev = {
+          id: data.idApp,
 
 
           title: data.heureDebut,
@@ -333,7 +339,7 @@ export class UserAppComponent implements OnInit {
 
 
 
-  //  console.log(this.events);
+    //  console.log(this.events);
 
 
 

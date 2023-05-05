@@ -1,0 +1,69 @@
+<app-nav-bar></app-nav-bar>
+
+<section class="py-xxl-10 pb-0" id="home">
+    <div class="bg-holder bg-size"
+        style="background-image:url(assets/front/img/gallery/hero-bg.png);background-position:top center;background-size:cover;">
+    </div>
+
+    <div class="container" style="background-color: white; padding-bottom: 5%;  border-radius: 25px;">
+        <div style="text-align: center;  padding-top: 2%; font-size: larger; font-family: cursive;">
+            Les listes des rendez-vous
+
+        </div>
+        <div class="container" style="padding-top: 3%;">
+            <div class="row">
+                <div class="col py-2" *ngFor="let s of appData">
+
+                    <div class="card" style="width: 18rem;">
+
+                        <div class="card-body">
+                            <h5 class="card-title">{{s.dateApp}}</h5>
+
+                            <h6 class="card-title">{{s.heureDebut}}</h6>
+
+                            <h6 class="card-title" *ngIf="s.state=='REFUSED'" style="color: red;">{{s.state}}</h6>
+                            <h6 class="card-title" *ngIf="s.state=='ACCEPTED'" style="color: green;">{{s.state}}</h6>
+                            <h6 class="card-title" *ngIf="s.state=='PENDING'" style="color: yellow;">{{s.state}}</h6>
+                            <p class="card-text">{{s.description}}</p>
+                            <button data-toggle="modal" data-target="#exampleModal" *ngIf="s.state=='PENDING'"   class="btn btn-secondary  btn-sm" (click)="getAppData(s)">
+                                Update</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Appointment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                    <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="selectedVlue" name="state" >
+                        >
+                        <option selected value="ACCEPTED" >ACCEPTED</option>
+                        <option value="REFUSED">REFUSED</option>
+                      
+                      </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Close</button>
+                    <button type="submit" (click)="sub()" class="btn btn-dark  btn-sm"  data-dismiss="modal" >Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</section>
