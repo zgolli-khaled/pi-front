@@ -39,7 +39,7 @@ import { MedecinModifAppComponent } from './frontOffice/medecin-modif-app/medeci
     AddAppointmentComponent,
     ChambresTableComponent,
     AddChambreComponent,
-    ChambreComponent
+    ChambreComponent,
     UserAppComponent,
     DeleteAppComponent,
     MedecinAppComponent,
