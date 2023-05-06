@@ -19,6 +19,11 @@ import { ChambresTableComponent } from './backOffice/chambres-table/chambres-tab
 import { AddChambreComponent } from './backOffice/add-chambre/add-chambre.component';
 import { ChambreComponent } from './frontOffice/chambre/chambre.component';
 
+import { UserAppComponent } from './frontOffice/user-app/user-app.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { DeleteAppComponent } from './frontOffice/delete-app/delete-app.component';
+import { MedecinAppComponent } from './frontOffice/medecin-app/medecin-app.component';
+import { MedecinModifAppComponent } from './frontOffice/medecin-modif-app/medecin-modif-app.component';
 
 @NgModule({
   declarations: [
@@ -34,14 +39,19 @@ import { ChambreComponent } from './frontOffice/chambre/chambre.component';
     AddAppointmentComponent,
     ChambresTableComponent,
     AddChambreComponent,
-    ChambreComponent
+    ChambreComponent,
+    UserAppComponent,
+    DeleteAppComponent,
+    MedecinAppComponent,
+    MedecinModifAppComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+     FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

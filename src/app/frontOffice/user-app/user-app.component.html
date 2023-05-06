@@ -1,0 +1,176 @@
+<app-nav-bar></app-nav-bar>
+<section class="py-xxl-10 pb-0" id="home">
+    <div class="bg-holder bg-size"
+        style="background-image:url(assets/front/img/gallery/hero-bg.png);background-position:top center;background-size:cover;">
+    </div>
+
+    <div class="container" style="background-color: white; padding-bottom: 5%;  border-radius: 25px;">
+
+        
+
+        <div style="text-align: center; padding-bottom: 3%;  padding-top: 5%; font-size: larger; font-family: cursive;">
+            Prendre un rendez vous !
+        
+        </div>
+        <div id="stepper1" class="bs-stepper">
+            <div class="bs-stepper-header">
+                <div class="step" data-target="#test-l-1">
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">1</span>
+                        <span class="bs-stepper-label">Choisir Specialité</span>
+                    </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#test-l-2"  >
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">2</span>
+                        <span class="bs-stepper-label">Choisir Medecin</span>
+                    </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#test-l-3">
+                    <button class="step-trigger">
+                        <span class="bs-stepper-circle">3</span>
+                        <span class="bs-stepper-label">Rendez vous</span>
+                    </button>
+                </div>
+            </div>
+            <div class="bs-stepper-content">
+
+                <div id="test-l-1" class="content">
+                    <div style="text-align: center;">
+
+                        <div class="container">
+                            <div class="row ">
+                                <div class="col p-3 m-3 specilite " (click)="next()" *ngFor="let s of specialite1"
+                                    (click)="getSpecialiteValue(s.name)"
+                                    style="border-style: groove; border-radius: 10px;">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <div class="icon-box text-center"><a class="text-decoration-none"><img
+                                                    class="mb-3" src="{{'assets/front/img/icons/'+s.icon}}" alt="..." />
+                                                <p class="fs-1 fs-xxl-2 text-center">{{s.name}}</p>
+                                            </a></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col p-3 m-3 specilite " (click)="next()" *ngFor="let s of specialite2"
+                                    style="border-style: groove; border-radius: 10px;">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <div class="icon-box text-center"><a class="text-decoration-none"><img
+                                                    class="mb-3" src="{{'assets/front/img/icons/'+s.icon}}" alt="..." />
+                                                <p class="fs-1 fs-xxl-2 text-center">{{s.name}}</p>
+                                            </a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>.
+
+                <div id="test-l-2" class="content">
+                    <div class="container">
+                        <div class="row ">
+                            <div class="col-3 p-3 m-3 specilite " style="border-style: groove; border-radius: 10px;"
+                                *ngFor="let d  of usersFilter">
+                                <div class="card text-center" (click)="medecin(d)" (click)="next()">
+                                    <img class="card-img-top"
+                                        src="https://img.freepik.com/free-photo/portrait-smiling-handsome-male-doctor-man_171337-5055.jpg"
+                                        alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{d.nom}} {{d.prenom}} </h5>
+
+                                        <p class="card-text" style="font-size: 0.8rem;">With supporting text below as a
+                                            natural lead-in to additional content.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+                <div id="test-l-3" class="content text-center">
+                    <button type="button" class="btn btn-secondary btn-sm   " data-toggle="modal" (click)="resetDate()"
+                        data-target="#exampleModalCenter">
+                        Choisir Date
+                    </button>
+
+                   
+                    <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Choisir rendez-vous</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="appDate">Appointment Date</label>
+                                <input type="date" class="form-control" id="appDate"
+                                    min="{{dateToday() | date:'yyyy-MM-dd'}}" name="date" placeholder="Enter Date"
+                                    (change)="onKey($event)" [value]="datereset"  [(ngModel)]="appointment.dateApp">
+
+                            </div>
+                            <!--   <div class="form-group">
+                                <label for="timeBegin">Temps Debut</label>
+                                <input type="time" class="form-control" id="timeBegin" name="tB"
+                                    placeholder="Enter Temps">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="timeEnd">Temps Fin</label>
+                                <input type="time" class="form-control" id="timeEnd" name="tF"
+                                    placeholder="Enter Temps">
+
+                            </div>
+                                -->
+
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Example select</label>
+                                <select class="form-control" id="exampleFormControlSelect1"  [attr.disabled]="selectVlaues ? null :'' "  (click)="getSelectedValue($event)">
+                                    <option value="" selected disabled >Select temps</option>
+                                    <option defaultValue='' *ngFor="let s of selectFilterOptions">{{s}}</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  [(ngModel)]="appointment.description"
+                                    name="desc"></textarea>
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark btn-sm " data-dismiss="modal">Close</button>
+                        <button type="button"   type="submit" class="btn btn-secondary btn-sm"  data-dismiss="modal" (click)="submitAPP()">Save </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
