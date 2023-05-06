@@ -1,0 +1,22 @@
+<app-nav-bar></app-nav-bar>
+<section class="py-xxl-10 pb-0" id="home">
+    <div class="bg-holder bg-size"
+        style="background-image:url(assets/front/img/gallery/hero-bg.png);background-position:top center;background-size:cover;">
+    </div>
+
+    <div class="container" style="background-color: white; padding-bottom: 5%;  border-radius: 25px;">
+
+
+
+        <div style="text-align: center; padding-bottom: 3%;  padding-top: 5%; font-size: larger; font-family: cursive;">
+            Liste des rendez vous !
+
+        </div>
+
+        <div>
+            <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+        </div>
+
+      
+    </div>
+</section>

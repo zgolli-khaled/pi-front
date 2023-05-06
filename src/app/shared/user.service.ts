@@ -6,6 +6,8 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class UserService {
+
+
   apiURL = "http://localhost:8089/user";
 
   constructor(private _http: HttpClient) { }
@@ -14,4 +16,9 @@ export class UserService {
   getAllUsers() {
     return this._http.get<User[]>(this.apiURL + "/all");
   }
+  getUsers() {
+    return this._http.get<User[]>(this.apiURL + "/all");
+  }
+
+
 }

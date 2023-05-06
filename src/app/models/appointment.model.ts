@@ -2,10 +2,11 @@ import { User } from "./user.model";
 
 export class Appointment {
     idApp !: number;
-    dateApp ! : Date;
+    dateApp ! : string;
     heureDebut ! : string;
-    heureFin ! : string;
     description !: string;
+    state !: string;
+    cin !: string;
     user ! : User;
     
 
