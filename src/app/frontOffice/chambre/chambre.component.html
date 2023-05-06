@@ -3,14 +3,14 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header"  >
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Chambre details</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body" *ngFor="let user of onclickUsers ">
             <div class="card">
-                <p class="card-text"  *ngIf="onclickUsers.length == 1" style="padding: 10px;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text"  *ngIf="onclickUsers.length == 1" style="padding: 10px; color:red; margin-left: 130px;">Cette chambre est reservée !</p>
                 <div class="card-header">
                   {{user.nom}}
                 </div>
@@ -19,7 +19,7 @@
                   <h5 class="card-title">Age : {{user.age}}</h5>
                   <h5 class="card-title">CIN : {{user.cin}}</h5>
                   
-                  <button class="btn btn-primary" *ngIf="onclickUsers.length != 1" (click)="affecteruser(user)"> Affecter a cette chambre </button>
+                  <button class="btn btn-primary" *ngIf="onclickUsers.length != 1" (click)="affecteruser(user)"  data-dismiss="modal"> Affecter a cette chambre </button>
                 </div>
               </div>
         </div>
@@ -36,8 +36,12 @@
 
 <section class="py-8" id="departments">
     <div class="container">
-        <div class="row">
 
+      
+       
+        
+        <div class="row">
+            
             <div class="col-sm py-2" *ngFor="let chambre of  datachambres">
     <div class="card" style="width: 18rem;">
         <img src="assets/front/img/gallery/ch1.jpg" class="card-img-top" alt="...">

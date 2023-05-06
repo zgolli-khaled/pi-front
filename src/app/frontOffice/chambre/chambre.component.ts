@@ -22,10 +22,18 @@ export class ChambreComponent implements OnInit {
 
 
   affecteruser(user:User){
-    this.chambre.user=user;
+    this.chambreAff.user=user;
 
     console.log(user);
-    this.chambreService.addChambre(this.chambreAff).subscribe(()=> console.log("added")
+    this.chambreService.addChambre(this.chambreAff).subscribe(()=> {
+      this.chambreService.getChambre().subscribe((data) => {
+
+        this.datachambres = data;
+  
+       
+  
+      });
+    }
     );
    
     
@@ -33,10 +41,8 @@ export class ChambreComponent implements OnInit {
 
   filterUsers(chambre: Chambre) {
 
-    console.log(this.datausers);
-    
-
-    console.log(this.datachambres);
+   console.log(this.datausers);
+   
     
     
 
