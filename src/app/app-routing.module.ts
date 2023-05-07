@@ -15,13 +15,12 @@ import {HomeComponent} from "./backOffice/home/home.component";
 
 const routes: Routes = [
   {
+
     path: '', component: DashboardComponent , children :[
       {
           path: 'NewPrescription', component: PrescriptionComponent} ,
          {path: 'reclamation', component: ReclamationComponent , children :[
-            { path: 'RecDialog', component: RecDialogComponent}]
-         },
-
+            { path: 'RecDialog', component: RecDialogComponent}]},
          {path: 'displayreclam', component: DisplayReclamComponent},
          {path: 'discussion/:id', component: DiscussionComponent},
       {path: 'Stat', component: StatComponent},

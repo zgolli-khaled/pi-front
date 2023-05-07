@@ -12,8 +12,7 @@ export class ReclamationComponent {
   objet: string = '';
   description: string = '';
   isButtonDisabled: boolean = true;
-  isButtonClickable = false;
-  isButtonAnimated = false;
+
 
   constructor(private http: HttpClient, private dialog: MatDialog) {}
 

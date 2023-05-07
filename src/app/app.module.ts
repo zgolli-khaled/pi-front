@@ -35,7 +35,8 @@ import { HomeComponent } from './backOffice/home/home.component';
     RecDialogComponent,
     DiscussionComponent,
     StatComponent,
-    HomeComponent
+    HomeComponent,
+
 
 
 
