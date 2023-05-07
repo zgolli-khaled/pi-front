@@ -1,0 +1,83 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+
+
+
+{% block content %}
+    
+
+
+    {{ form_start(f) }}
+    <section class="register-area ptb-100">
+        <div class="container">
+            <div class="register-form">
+                <h2>Inscription</h2>
+                <div class="form-group">
+                    {{ form_row(f.Nom,{'attr': {'class':'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_row(f.Prenom,{'attr': {'class':'form-control'}}) }}
+
+                </div>
+                <div class="form-group">
+                    <div class="custom-error">
+                        {{form_errors(f.Username)}}
+                    </div>
+                    {{ form_label(f.Username,"Username",{'attr':{'class':'form-label'}}) }}
+                    {{ form_widget(f.Username,{'attr': {'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    <div class="custom-error">
+                        {{form_errors(f.Email)}}
+                    </div>
+                    {{ form_label(f.Email,"Adresse Email",{'attr':{'class':'form-label'}}) }}
+                    {{ form_widget(f.Email,{'attr': {'class':'form-control'}}) }}
+
+                </div>
+                <div class="form-group">
+                    <div class="custom-error">
+                    {{form_errors(f.Password)}}
+                </div>
+                {{ form_label(f.Password,"Mot de passe",{'attr':{'class':'form-label'}}) }}
+                {{ form_widget(f.Password,{'attr': {'class':'form-control'}}) }}
+                </div>
+  
+                <div class="form-group">
+                  {{ form_row(f.roles, {'attr':{'class':'form-control form-control'} }) }}
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-error">
+                        {{form_errors(f.Confirm_password)}}
+                    </div>
+                    {{ form_label(f.Confirm_password,"Confirmer mot de passe",{'attr':{'class':'form-label'}}) }}
+                    {{ form_widget(f.Confirm_password,{'attr': {'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(f.file,{'attr': {'class':'form-control'}}) }}
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-error">
+                        {{form_errors(f.captcha)}}
+                    </div>
+                    {{ form_label(f.captcha,"Captcha",{'attr':{'class':'form-label'}}) }}
+                    {{ form_widget(f.captcha,{'attr': {'class':'form-control'}}) }}
+                </div>
+                    <div class="form-group">
+                        <button type="submit" class="default-btn">Inscription </button>
+                    </div>
+                 <div class="form-group">
+                                <a href="{{ path('login') }}" class="login">login</a>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{ form_end(f) }}
+
+
+{% endblock  %}
