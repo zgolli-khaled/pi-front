@@ -6,10 +6,18 @@ import { ForgotPasswordComponent } from './login/forgot-password/forgot-password
 import { RegisterComponent } from './login/register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.component';
+import { IsAdminGuard } from './_gards/is-admin.guard';
+import { IsMedecinGuard } from './_gards/is-medecin.guard';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
+
+
 
 const routes: Routes = [
   {
-    path: "dashboard", component: DashboardComponent
+    path: "dashboard",
+    component: DashboardComponent,
+    canActivate: [IsAdminGuard] // add the guard here
   },
   {
     path: "login", component: LoginComponent
@@ -21,10 +29,19 @@ const routes: Routes = [
     path: "register", component: RegisterComponent
   },
   {
-    path: '',redirectTo : 'login',pathMatch:'full'
+    path: "board-user", component: BoardUserComponent 
   },
   {
-    path: "docTable", component: DoctorsTableComponent
+    path: "resetpassword", component: ResetPasswordComponent
+  },
+  {
+    path: '',redirectTo : 'login',pathMatch:'full'
+  },
+  
+  {
+    path: "docTable",
+     component: DoctorsTableComponent,
+    canActivate: [IsMedecinGuard]
   },{
     path: '**',component: NotFoundComponent
   },

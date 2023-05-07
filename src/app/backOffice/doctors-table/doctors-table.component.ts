@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-doctors-table',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoctorsTableComponent implements OnInit {
 
-  constructor() { }
+  roles: string[] = [];
+  isLoggedIn = false;
+  constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
     this.loadJsFile("assets/back/vendor/jquery/jquery.min.js");
@@ -25,13 +28,21 @@ export class DoctorsTableComponent implements OnInit {
 
 
    
-
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+      
+    }
     
 
     
 
     
     
+  }
+  logout(): void {
+    this.tokenStorage.signOut();
+    window.location.reload();
   }
 
   public loadJsFile(url : string) {  
