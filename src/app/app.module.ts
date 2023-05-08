@@ -13,7 +13,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomePageComponent } from './frontOffice/home-page/home-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddAppointmentComponent } from './backOffice/add-appointment/add-appointment.component';
 import { ChambresTableComponent } from './backOffice/chambres-table/chambres-table.component';
 import { AddChambreComponent } from './backOffice/add-chambre/add-chambre.component';
@@ -24,6 +24,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { DeleteAppComponent } from './frontOffice/delete-app/delete-app.component';
 import { MedecinAppComponent } from './frontOffice/medecin-app/medecin-app.component';
 import { MedecinModifAppComponent } from './frontOffice/medecin-modif-app/medecin-modif-app.component';
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MedecinModifAppComponent } from './frontOffice/medecin-modif-app/medeci
     UserAppComponent,
     DeleteAppComponent,
     MedecinAppComponent,
-    MedecinModifAppComponent
+    MedecinModifAppComponent,
+    ResetPasswordComponent
     
   ],
   imports: [
@@ -51,7 +53,8 @@ import { MedecinModifAppComponent } from './frontOffice/medecin-modif-app/medeci
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-     FullCalendarModule
+     FullCalendarModule,
+     ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

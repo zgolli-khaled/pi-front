@@ -383,7 +383,8 @@ console.log(this.dataApp);
     this.userService.getUsers().subscribe((data) => {
 
       this.dataUsers = data;
-
+      console.log(data);
+      
 
     });
 

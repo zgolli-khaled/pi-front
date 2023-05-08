@@ -14,6 +14,9 @@ import { UserAppComponent } from './frontOffice/user-app/user-app.component';
 import { DeleteAppComponent } from './frontOffice/delete-app/delete-app.component';
 import { MedecinAppComponent } from './frontOffice/medecin-app/medecin-app.component';
 import { MedecinModifAppComponent } from './frontOffice/medecin-modif-app/medecin-modif-app.component';
+import { IsAdminGuard } from './_gards/is-admin.guard';
+import { IsMedecinGuard } from './_gards/is-medecin.guard';
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -21,7 +24,9 @@ const routes: Routes = [
     path: "home", component: HomePageComponent
   },
   {
-    path: "dashboard", component: DashboardComponent
+    path: "dashboard",
+    component: DashboardComponent,
+    canActivate: [IsAdminGuard] // add the guard here
   },
   {
     path: "user/appointment/add", component: UserAppComponent
@@ -45,6 +50,14 @@ const routes: Routes = [
   },
   {
     path: "chambre", component: ChambresTableComponent
+  },
+  {
+    path: "resetpassword", component: ResetPasswordComponent
+  },
+  {
+    path: "docTable",
+     component: DoctorsTableComponent,
+    canActivate: [IsMedecinGuard]
   },
   {
     path: "forgotPassword", component: ForgotPasswordComponent
