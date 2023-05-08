@@ -19,7 +19,7 @@ export class DisplayReclamComponent implements OnInit {
   ngOnInit() {
 
 
-    this.http.get<any[]>('http://localhost:8098/reclamation/displayreclamation').pipe(
+    this.http.get<any[]>('http://localhost:8089/reclamation/displayreclamation').pipe(
       map((reclamations) => reclamations.sort((a, b) => {
         // Sort by status
         if (a.status < b.status) {
@@ -51,7 +51,7 @@ export class DisplayReclamComponent implements OnInit {
 
   deleteReclamation(reclamationId: number) {
     this.ngOnInit();
-    this.http.delete(`http://localhost:8098/reclamation/deleteReclamation/${reclamationId}`).subscribe((res) => {
+    this.http.delete(`http://localhost:8089/reclamation/deleteReclamation/${reclamationId}`).subscribe((res) => {
       console.log(`Reclamation with id ${reclamationId} deleted successfully`);
       this.reclamations = this.reclamations.filter((reclamation) => reclamation.id !== reclamationId);
       this.ngOnInit();
@@ -59,7 +59,7 @@ export class DisplayReclamComponent implements OnInit {
   }
 
   closeReclamation(reclamationId: number) {
-    const endpoint = `http://localhost:8098/reclamation/ended/${reclamationId}`;
+    const endpoint = `http://localhost:8089/reclamation/ended/${reclamationId}`;
     this.http.put(endpoint, {}).subscribe((res) => {
       console.log(`Reclamation with id ${reclamationId} closed successfully`);
       const index = this.reclamations.findIndex((reclamation) => reclamation.id === reclamationId);

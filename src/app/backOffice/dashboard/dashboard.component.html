@@ -268,17 +268,16 @@
               <h6 class="dropdown-header">
                 Message Center
               </h6>
-              <a *ngFor="let reclamation of reclamations | slice:0:3" class="dropdown-item d-flex align-items-center" href="#">
+              <a *ngFor="let reclamation of nonTraiteeReclamations  | slice:0:3" class="dropdown-item d-flex align-items-center" href="http://localhost:4200/discussion/{{ reclamation.idRec }}">
                 <div class="font-weight-bold">
                   <div class="text-truncate">{{ reclamation.objet }}</div>
                   <div class="small text-gray-500">{{ reclamation.date }}</div>
                 </div>
               </a>
-              <a class="dropdown-item text-center small text-gray-500" href="displayreclam">Read More Messages</a>
+              <a class="dropdown-item text-center small text-gray-500" href="displayreclam">Read More Messages....</a>
             </div>
           </li>
 
-          <div class="topbar-divider d-none d-sm-block"></div>
 
           <!-- Dropdown - Messages *************************************************************************************************-->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -435,7 +434,26 @@
 
 
 
+
+<!-- Bootstrap core JavaScript-->
+
+
+<script src="/assets/back/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/back/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/assets/back/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/assets/back/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="/assets/back/vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="/assets/back/js/demo/chart-area-demo.js"></script>
+<script src="/assets/back/js/demo/chart-pie-demo.js"></script>
+
 </body>
 
 </html>
-

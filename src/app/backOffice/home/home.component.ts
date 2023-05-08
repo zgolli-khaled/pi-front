@@ -12,7 +12,7 @@ export class HomeComponent {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:8098/reclamation/displayreclamation')
+    this.http.get<any[]>('http://localhost:8089/reclamation/displayreclamation')
       .subscribe((reclamations) => {
         // Filter reclamations that have the status "non_traitée"
         const nonTraiteeReclamations = reclamations.filter((reclamation) => reclamation.status === 'non_traitée');

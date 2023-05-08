@@ -12,11 +12,11 @@ export class StatComponent {
 
   constructor(private http: HttpClient ) { }
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:8098/reclamation/displayreclamation').subscribe((res) => {
+    this.http.get<any[]>('http://localhost:8089/reclamation/displayreclamation').subscribe((res) => {
       this.reclamations = res;
     });
 
-    this.http.get<any[]>('http://localhost:8098/reclamation/statistiques').subscribe((res) => {
+    this.http.get<any[]>('http://localhost:8089/reclamation/statistiques').subscribe((res) => {
       this.stats = res;
 
       const data = {
