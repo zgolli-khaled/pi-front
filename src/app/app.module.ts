@@ -4,12 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './backOffice/dashboard/dashboard.component';
-import { LoginComponent } from './login/login/login.component';
-import { RegisterComponent } from './login/register/register.component';
-import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { DoctorsTableComponent } from './backOffice/doctors-table/doctors-table.component';
 import { PrescriptionComponent } from './backOffice/prescription/prescription.component';
-import { MenuComponent } from './composants_backOffice/menu/menu.component';
 import { ReclamationComponent } from './backOffice/reclamation/reclamation.component';
 import {HttpClientModule} from "@angular/common/http";
 import { DisplayReclamComponent } from './backOffice/display-reclam/display-reclam.component';
@@ -19,36 +15,36 @@ import { DiscussionComponent } from './backOffice/discussion/discussion.componen
 import { NgxPaginationModule } from 'ngx-pagination';
 import { StatComponent } from './backOffice/stat/stat.component';
 import { HomeComponent } from './backOffice/home/home.component';
+import { DashboardFrontComponent } from './Front-end/dashboard-front/dashboard-front.component';
+import { ContactusComponent } from './Front-end/contactus/contactus.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    LoginComponent,
-    RegisterComponent,
-    ForgotPasswordComponent,
     DoctorsTableComponent,
     PrescriptionComponent,
-    MenuComponent,
     ReclamationComponent,
     DisplayReclamComponent,
     RecDialogComponent,
     DiscussionComponent,
     StatComponent,
     HomeComponent,
+    DashboardFrontComponent,
+    ContactusComponent,
 
 
 
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    MatDialogModule,
-    NgxPaginationModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        MatDialogModule,
+        NgxPaginationModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
