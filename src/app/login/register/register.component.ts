@@ -5,6 +5,8 @@ import { TokenStorageService } from '../../_services/token-storage.service';
 import { UserService } from 'src/app/_services/user.service';
 import { Router } from '@angular/router';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 
 const USER_KEY = 'auth-user';
@@ -15,6 +17,7 @@ const USER_KEY = 'auth-user';
 })
 export class RegisterComponent implements OnInit {
   selectedRoles: string[] = [];
+  registring = false;
   
   form: any = {
     username: null,
@@ -42,6 +45,29 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     
   } 
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private router: Router,private _snackBar: MatSnackBar) { }
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.form.address = position;
+        console.log(position.coords.accuracy, position.coords.longitude);
+        console.log(position);
+      });
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+    
+    
+  }
+  
+  openSuccessSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+       duration: 4000,
+       horizontalPosition:'center',
+       verticalPosition:'bottom',
+       panelClass:["snackbar-success-style"]
+    });
+  }
 
   onChangeCategory(event: any, role: any) {
 		this.selectedRoles.push(role.value);
@@ -53,18 +79,19 @@ export class RegisterComponent implements OnInit {
     { name:'MEDECIEN', value:'MEDECIN', selected: false },
 
   ]
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService,private router: Router) { }
+  
   
   onSubmit(): void {
+    this.registring = true;
     const { username, email, password, nom, address, numero, cin, prenom, birthday,age,} = this.form;
     const selectedRoles = this.selectedRoles ;
     this.authService.register(username, email, password, nom, address, numero, cin, prenom, birthday,age,selectedRoles).subscribe({
       next: data => {
+        this.openSuccessSnackBar('"accout created successfully" ');
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         this.router.navigate(['/login']);
-        
         
      
       },

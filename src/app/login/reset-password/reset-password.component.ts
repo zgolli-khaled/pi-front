@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-reset-password',
@@ -9,42 +9,48 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent {
-  resetPasswordForm: FormGroup;
-  errorMessage!: string;
+
+  token!: string;
+  password!: string;
+  confirmPassword!: string;
+  error!: string;
+  message!: string;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router,private _snackBar: MatSnackBar
   ) {
-    this.resetPasswordForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+    this.route.queryParams.subscribe(params => {
+      this.token = params['token'];
     });
   }
-
-  onSubmit() {
-    const username = this.resetPasswordForm.value.username;
-    const password = this.resetPasswordForm.value.password;
-    const confirmPassword = this.resetPasswordForm.value.confirmPassword;
-
-    if (password !== confirmPassword) {
-      this.errorMessage = 'Passwords do not match';
+  openSuccessSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+       duration: 4000,
+       horizontalPosition:'center',
+       verticalPosition:'bottom',
+       panelClass:["snackbar-success-style"]
+    });
+  }
+  resetPassword() {
+    if (this.password !== this.confirmPassword) {
+      this.error = 'Passwords do not match';
       return;
     }
 
-    const body = {
-      username: username,
-      password: password
-    };
-
-    this.http.post('http://localhost:8089/api/pass/reset_password', body).subscribe(
+    this.http.post('http://localhost:8089/api/pass/reset_password', {
+      token: this.token,
+      password: this.password
+    }).subscribe(
       response => {
-        console.log(response);
+        this.openSuccessSnackBar('"Password has been updated successfully" ');
         this.router.navigate(['/login']);
       },
-     
+      
     );
   }
 }
+
+
+
