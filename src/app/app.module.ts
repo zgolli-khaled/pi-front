@@ -17,6 +17,9 @@ import { StatComponent } from './backOffice/stat/stat.component';
 import { HomeComponent } from './backOffice/home/home.component';
 import { DashboardFrontComponent } from './Front-end/dashboard-front/dashboard-front.component';
 import { ContactusComponent } from './Front-end/contactus/contactus.component';
+import { MyreclamationComponent } from './Front-end/myreclamation/myreclamation.component';
+import { ChatComponent } from './Front-end/chat/chat.component';
+import { AllreclamationsComponent } from './Front-end/allreclamations/allreclamations.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { ContactusComponent } from './Front-end/contactus/contactus.component';
     HomeComponent,
     DashboardFrontComponent,
     ContactusComponent,
+    MyreclamationComponent,
+    ChatComponent,
+    AllreclamationsComponent,
 
 
 

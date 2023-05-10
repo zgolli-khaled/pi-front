@@ -17,7 +17,7 @@ export class ContactusComponent {
   constructor(private http: HttpClient, private dialog: MatDialog , private router: Router) {}
 
   submitReclamation() {
-    const id = 1;
+    const id = 2;
     const data = { objet: this.objet, description: this.description, id: id };
     const options = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -42,9 +42,6 @@ export class ContactusComponent {
     this.router.navigate(['/dashFront']);
   }
 
- /* onButtonClick() {
-    this.router.navigate(['/dashFront']);
-  }*/
 
   checkForm() {
     const objet = this.objet.trim();
