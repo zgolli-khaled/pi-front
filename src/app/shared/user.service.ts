@@ -20,5 +20,10 @@ export class UserService {
     return this._http.get<User[]>(this.apiURL + "/all");
   }
 
+  getUserByMail( mail : string){
+    return this._http.get<User>(this.apiURL + '/'+mail);
+
+  }
+
 
 }

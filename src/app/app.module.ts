@@ -49,7 +49,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DeleteAppComponent,
     MedecinAppComponent,
     MedecinModifAppComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+   /* MedicamentsComponent,
+    AffichageMedComponent,
+    ModifComponent*/
     
   ],
   imports: [
