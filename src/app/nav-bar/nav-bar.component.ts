@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from '../_services/token-storage.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private tokenStorage: TokenStorageService,) { }
+
+  user : any =null;
+  isLoggedIn = false;
+  isLoginFailed = false;
 
   ngOnInit(): void {
+    this.user=this.tokenStorage.getUser();
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+     
+      
+    }
 
     this.loadJsFile("assets/front/vendors/bootstrap/bootstrap.min.js");
     this.loadJsFile("assets/front/vendors/is/is.min.js");
@@ -26,5 +38,8 @@ export class NavBarComponent implements OnInit {
     document.getElementsByTagName('head')[0].appendChild(node);  
   }  
 
-
+  logout(): void {
+    this.tokenStorage.signOut();
+    window.location.reload();
+  }
 }

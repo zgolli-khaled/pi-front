@@ -19,6 +19,7 @@ import { IsMedecinGuard } from './_gards/is-medecin.guard';
 import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 
 
+
 const routes: Routes = [
   {
     path: "home", component: HomePageComponent
@@ -44,6 +45,7 @@ const routes: Routes = [
   {
     path: "appointments/addAppointment", component: AddAppointmentComponent
   },
+  
 
   {
     path: "login", component: LoginComponent

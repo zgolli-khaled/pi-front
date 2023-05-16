@@ -25,6 +25,10 @@ import { DeleteAppComponent } from './frontOffice/delete-app/delete-app.componen
 import { MedecinAppComponent } from './frontOffice/medecin-app/medecin-app.component';
 import { MedecinModifAppComponent } from './frontOffice/medecin-modif-app/medecin-modif-app.component';
 import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +49,10 @@ import { ResetPasswordComponent } from './login/reset-password/reset-password.co
     DeleteAppComponent,
     MedecinAppComponent,
     MedecinModifAppComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+   /* MedicamentsComponent,
+    AffichageMedComponent,
+    ModifComponent*/
     
   ],
   imports: [
@@ -54,7 +61,10 @@ import { ResetPasswordComponent } from './login/reset-password/reset-password.co
     HttpClientModule,
     FormsModule,
      FullCalendarModule,
-     ReactiveFormsModule
+     ReactiveFormsModule,
+     MatSnackBarModule,
+     MatProgressSpinnerModule,
+     BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

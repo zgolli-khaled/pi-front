@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import Stepper from 'bs-stepper';
 import { User } from 'src/app/models/user.model';
-import { UserService } from 'src/app/shared/user.service';
+  import { UserService } from 'src/app/shared/user.service';
 import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
 
 import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
@@ -10,6 +10,7 @@ import { FullCalendarComponent } from '@fullcalendar/angular';
 import { AppointementService } from 'src/app/shared/appointement.service';
 import { Appointment } from 'src/app/models/appointment.model';
 import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-user-app',
@@ -155,7 +156,7 @@ export class UserAppComponent implements OnInit {
   specialite1: any = [];
   specialite2: any = [];
 
-  constructor(private userService: UserService, private appService: AppointementService, private _router: Router) { }
+  constructor(private userService: UserService, private appService: AppointementService, private _router: Router ,private tokenStorage: TokenStorageService) { }
   name = 'Angular';
   private stepper !: Stepper;
 
@@ -194,26 +195,7 @@ export class UserAppComponent implements OnInit {
 
     //   this.appointment.dateApp=new Date(year, month , day);
 
-    this.appointment.user = {
-      "idUser": 7,
-      "nom": "tst2",
-      "prenom": "test2",
-      "numero": "123456",
-      "birthday": "2023-00-04",
-      "address": "test2",
-      "age": 10,
-      "cin": "2335682",
-      "specialite": "test2",
-      "role": {
-        "idRole": 1,
-        "role": "MEDECIN"
-      },
-      "chambre": null,
-      "pharmacie": null,
-      "reclamations": [],
-      "prescriptions": [],
-      "payments": []
-    }
+    this.appointment.user = this.user;
     this.appointment.cin = this.medecinValue.cin;
 
     this.appointment.state="PENDING"
@@ -372,7 +354,19 @@ console.log(this.dataApp);
   }
   todayDate !: Date;
 
+  user !: User;
+
   ngOnInit(): void {
+
+   
+
+    this.userService.getUserByMail(this.tokenStorage.getUser().email).subscribe((data)=>{
+
+      this.user=data;
+
+      console.log(data);
+      
+    })
 
     this.todayDate = new Date();
 
